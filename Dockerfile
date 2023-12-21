@@ -1,4 +1,7 @@
 FROM tensorflow/tensorflow:latest-gpu-py3
+RUN rm /etc/apt/sources.list.d/cuda.list
+RUN apt-key del 7fa2af80
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
 RUN apt update -y && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 RUN apt install git build-essential clang bison flex \
         libreadline-dev gawk tcl-dev libffi-dev \
